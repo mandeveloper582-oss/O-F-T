@@ -38,7 +38,16 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("darkToggle").onclick = () => {
     document.body.classList.toggle("dark");
   };
+document.querySelectorAll(".drawer a").forEach(link => {
+  link.addEventListener("click", (e) => {
+    e.preventDefault();
 
+    const id = link.dataset.section;
+
+    window.showSection(id);
+    window.closeMenu();
+  });
+});
   // ===== TOKEN =====
   window.token = localStorage.getItem("token");
   if (window.token) dashboard.classList.remove("hidden");
